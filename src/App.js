@@ -39,7 +39,6 @@ const App = ()=>{
     return (<>
         <Header onFilter = {filter}></Header>
         <div className="movies">
-            {console.log(movieYears)}
             {movieContainerList}
         {}</div>
     </>)

@@ -4,6 +4,8 @@
   width: 140px;
   height: 250px;
   margin: 0.5rem;
+  background-image: url(../../../public/placeholder.png);
+  background-position: center;
 }
 .movie-poster {
   width: 100%;
