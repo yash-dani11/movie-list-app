@@ -5,8 +5,9 @@ import Shimmer from "../Shimmer/Shimmer";
 import { MOVIE_LIST_API } from "../../utils/constants";
 const MovieContainer = forwardRef(({ year, genre }, containerRef) => {
   const [allMovies, setAllMovies] = useState(
-    Array(20).fill(<Shimmer></Shimmer>)
-  );
+    Array(20).fill().map((_, index) => <Shimmer key={index}></Shimmer>)
+  );   // using index as key since this component is static
+
   useEffect(() => {
     const getMovies = async () => {
       let URI = `${MOVIE_LIST_API}&primary_release_year=${year}&api_key=${process.env.REACT_APP_API_KEY}`;

@@ -1,8 +1,7 @@
-import {useState,useEffect} from 'react';
-import { currentYear,defaultYearInView } from './constants';
-const useInfiniteScroll = (upScrollElement,downScrollElement) => {
-    const [movieYears,setMovieYears] = useState([defaultYearInView-1,defaultYearInView,defaultYearInView+1]);
-    useEffect(()=>{
+import { currentYear } from './constants';
+const useInfiniteScroll = (upScrollElement,downScrollElement,setMovieYears) => {
+    
+    
         if(upScrollElement && downScrollElement){
             const infinteScrollUpObserver = new IntersectionObserver((entries)=>infiniteScrollCallback(entries,-1),{threshold:0.2});
             infinteScrollUpObserver.observe(upScrollElement);
@@ -29,9 +28,6 @@ const useInfiniteScroll = (upScrollElement,downScrollElement) => {
                 })
             }
         }
-        
-    },[movieYears]);
-    return movieYears;
 }
 
 export default useInfiniteScroll;

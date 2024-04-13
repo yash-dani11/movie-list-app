@@ -5,17 +5,24 @@ import { useState,useRef, useEffect } from "react";
 import { defaultYearInView } from "./utils/constants";
 import useInfiniteScroll from "./utils/useInfiniteScroll";
 const App = ()=>{
+    const defaultYears = [defaultYearInView-1,defaultYearInView,defaultYearInView+1];
     const [selectedGenre,setSelectedGenre] = useState([-1]);
-    const filter = (genreId)=>{
-        setSelectedGenre(genreId);
-    }
     const infiniteDownRef = useRef();
     const infiniteUpRef = useRef();
     const defaultYearRef = useRef();
-    const movieYears = useInfiniteScroll(infiniteUpRef.current,infiniteDownRef.current);
+    const [movieYears,setMovieYears] = useState([defaultYearInView-1,defaultYearInView,defaultYearInView+1]);
+
+    const filter = (genreId)=>{
+        setSelectedGenre(genreId);
+        setMovieYears(defaultYears);
+        defaultYearRef?.current?.scrollIntoView({behavior:"instant",block:"start"});
+    }
     useEffect(()=>{
         defaultYearRef?.current?.scrollIntoView({behavior:"instant",block:"start"});
     },[]);
+    useEffect(()=>{
+        useInfiniteScroll(infiniteUpRef.current,infiniteDownRef.current,setMovieYears);
+    },[movieYears]);
     const movieContainerList = movieYears.map((year,index)=>{
         let ref = null;
         if(year === defaultYearInView){
