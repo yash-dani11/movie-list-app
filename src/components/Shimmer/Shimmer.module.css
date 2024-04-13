@@ -1,0 +1,18 @@
+.shimmer-loader {
+  width: 140px;
+  height: 250px;
+  margin: 0.5rem;
+  animation: loader 2s linear infinite;
+}
+
+@keyframes loader {
+  0% {
+    background-color: #494848;
+  }
+  50% {
+    background-color: #595959;
+  }
+  100% {
+    background-color: #242424;
+  }
+}

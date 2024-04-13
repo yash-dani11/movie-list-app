@@ -1,9 +1,41 @@
-import MovieCard from "./components/MovieCard/MovieCard";
-
+import Header from "./components/Header/Header";
+import MovieContainer from "./components/MovieContainer/MovieContainer";
+import "./App.css";
+import { useState,useRef, useEffect } from "react";
+import { defaultYearInView } from "./utils/constants";
+import useInfiniteScroll from "./utils/useInfiniteScroll";
 const App = ()=>{
-    return (<div>
-        <MovieCard></MovieCard>
-    </div>)
+    const [selectedGenre,setSelectedGenre] = useState([-1]);
+    const filter = (genreId)=>{
+        setSelectedGenre(genreId);
+    }
+    const infiniteDownRef = useRef();
+    const infiniteUpRef = useRef();
+    const defaultYearRef = useRef();
+    const movieYears = useInfiniteScroll(infiniteUpRef.current,infiniteDownRef.current);
+    useEffect(()=>{
+        defaultYearRef?.current?.scrollIntoView({behavior:"instant",block:"start"});
+    },[]);
+    const movieContainerList = movieYears.map((year,index)=>{
+        let ref = null;
+        if(year === defaultYearInView){
+            ref = defaultYearRef;
+        }
+        else if(index ===0){
+            ref = infiniteUpRef;
+        }
+        else if(index=== movieYears.length-1){
+            ref = infiniteDownRef;    
+        }
+        return <MovieContainer year={year} genre = {selectedGenre} key={year} ref={ref}></MovieContainer>
+        })
+    return (<>
+        <Header onFilter = {filter}></Header>
+        <div className="movies">
+            {console.log(movieYears)}
+            {movieContainerList}
+        {}</div>
+    </>)
 }
 
 export default App;

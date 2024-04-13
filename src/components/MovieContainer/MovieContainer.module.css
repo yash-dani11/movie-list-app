@@ -1,0 +1,13 @@
+.movie-container {
+  margin: 1rem 0.5rem;
+  scroll-margin: 8rem;
+}
+.movie-year {
+  margin-left: 2rem;
+}
+.movie-list {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
