@@ -4,6 +4,7 @@ This **React** app that displays a list of movies from The Movie Database (TMDb)
 
 
 ## Installing Dependencies
+Please ensure that Node.js is installed on your system.
 
 This project uses Parcel as a module bundler. The only other dependencies used are react and react-dom.
 
