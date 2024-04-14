@@ -1,4 +1,4 @@
-# movie-filter-app
+# movie-list-app
 
 This **React** app that displays a list of movies from The Movie Database (TMDb) API. The app shows top movies for each year and users can filter by genre, the app also loads top movies from previous / next years as the user scrolls through the list.
 
