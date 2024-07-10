@@ -24,7 +24,7 @@ This will start the project on your local machine at port 3000. Please ensure th
 To view the web app, enter the following URL in your browser: http://localhost:3000
 
 
-## List of Requirements Covered
+## List of Features
 
 The project includes the following functionalities:
 
@@ -32,4 +32,3 @@ The project includes the following functionalities:
 - Smooth scrolling behavior for loading more movies as the user scrolls in any direction.
 - Implementation of a Shimmer UI to maintain smooth scrolling experience when more movies are added to the DOM.
 
-*No bonus requirements have been covered in this project.*
